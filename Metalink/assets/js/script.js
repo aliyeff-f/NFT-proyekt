@@ -1,11 +1,5 @@
 'use strict';
 
-
-
-/**
- * NAVBAR TOGGLE FOR MOBILE
- */
-
 const navbar = document.querySelector("[data-navbar]");
 const navToggler = document.querySelector("[data-nav-toggler]");
 
@@ -13,13 +7,6 @@ navToggler.addEventListener("click", function () {
   navbar.classList.toggle("active");
   this.classList.toggle("active");
 });
-
-
-
-/**
- * HEADER & BACK TOP BTN
- * header and back top btn visible when window scroll down to 200px
- */
 
 const header = document.querySelector("[data-header]");
 const backTopBtn = document.querySelector("[data-back-top-btn]");
@@ -54,10 +41,6 @@ const sliderInit = function (currentSlider) {
   const moveSliderItem = function () {
     sliderContainer.style.transform = `translateX(-${sliderContainer.children[currentSlidePos].offsetLeft}px)`;
   }
-
-  /**
-   * NEXT SLIDE
-   */
   const slideNext = function () {
     const slideEnd = currentSlidePos >= totalSliderItems;
 
@@ -72,9 +55,6 @@ const sliderInit = function (currentSlider) {
 
   sliderNextBtn.addEventListener("click", slideNext);
 
-  /**
-   * PREVIOUS SLIDE
-   */
   const slidePrev = function () {
     if (currentSlidePos <= 0) {
       currentSlidePos = totalSliderItems;
@@ -93,10 +73,6 @@ const sliderInit = function (currentSlider) {
     sliderPrevBtn.setAttribute("disabled", "");
   }
 
-  /**
-   * AUTO SLIDE
-   */
-
   let autoSlideInterval;
 
   const startAutoSlide = () => autoSlideInterval = setInterval(slideNext, 3000);
@@ -107,21 +83,12 @@ const sliderInit = function (currentSlider) {
 
   currentSlider.addEventListener("mouseout", startAutoSlide);
 
-  /**
-   * RESPONSIVE
-   */
-
   window.addEventListener("resize", moveSliderItem);
 
 }
 
 for (let i = 0, len = sliders.length; i < len; i++) { sliderInit(sliders[i]); }
 
-
-
-/**
- * ACCORDION
- */
 
 const accordions = document.querySelectorAll("[data-accordion]");
 
